@@ -1,0 +1,49 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from flask import Flask, render_template, request, send_file
+import io
+import base64
+
+app = Flask(__name__)
+
+# Главная страница
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+
+# Страница для загрузки данных
+@app.route('/upload', methods=['GET', 'POST'])
+def upload_data():
+    if request.method == 'POST':
+        file = request.files['file']
+        if file:
+            df = pd.read_csv(file)
+            # Отображаем первые 5 строк данных
+            return render_template('upload.html', tables=[df.head().to_html(classes='data')], data=df.to_dict())
+    return render_template('upload.html')
+
+
+# Генерация графиков
+@app.route('/visualize', methods=['POST'])
+def visualize():
+    data = request.form['data']
+    df = pd.read_json(data)
+    
+    # Пример простого графика (гистограмма по столбцу "sales")
+    plt.figure(figsize=(10, 6))
+    sns.histplot(df['sales'], kde=True)
+    plt.title('Sales Distribution')
+    
+    # Сохранение графика в буфер
+    img = io.BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    img_base64 = base64.b64encode(img.getvalue()).decode('utf-8')
+    
+    return render_template('index.html', img_data=img_base64)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
