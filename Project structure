@@ -1,0 +1,10 @@
+data-visualization-tool/
+│
+├── app.py                # Основной сервер Flask
+├── templates/
+│   ├── index.html        # Шаблон главной страницы
+│   └── upload.html       # Шаблон для загрузки данных
+├── static/
+│   └── style.css         # Стиль для страницы
+├── data.csv              # Пример данных для анализа (или загрузка файла)
+└── requirements.txt      # Список зависимостей
