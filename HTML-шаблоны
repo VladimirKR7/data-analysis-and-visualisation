@@ -17,7 +17,21 @@
 
     {% if img_data %}
         <h2>Visualization</h2>
-        <img src="data:image/png;base64,{{ img_data }}" alt="Sales Distribution Graph">
+        <img src="data:image/png;base64,{{ img_data }}" alt="Graph">
+    {% endif %}
+    
+    {% if data %}
+        <h2>Select Chart Type</h2>
+        <form action="/visualize" method="POST">
+            <input type="hidden" name="data" value="{{ data|tojson }}">
+            <select name="chart_type">
+                <option value="bar">Bar Chart</option>
+                <option value="line">Line Chart</option>
+                <option value="pie">Pie Chart</option>
+                <option value="histogram">Histogram</option>
+            </select>
+            <button type="submit">Generate Chart</button>
+        </form>
     {% endif %}
 </body>
 </html>
