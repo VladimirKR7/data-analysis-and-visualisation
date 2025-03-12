@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization Tool</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Welcome to the Data Visualization Tool</h1>
+    <p>Upload a CSV file to analyze your data and visualize it using graphs!</p>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".csv" required>
+        <button type="submit">Upload Data</button>
+    </form>
+
+    {% if img_data %}
+        <h2>Visualization</h2>
+        <img src="data:image/png;base64,{{ img_data }}" alt="Sales Distribution Graph">
+    {% endif %}
+</body>
+</html>
