@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Data</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Upload Your Data</h1>
+    <p>Review your data before proceeding with visualizations:</p>
+
+    <form action="/visualize" method="POST">
+        <h2>Data Preview</h2>
+        <table class="data">
+            {{ tables|safe }}
+        </table>
+        <input type="hidden" name="data" value="{{ data|tojson }}">
+        <button type="submit">Generate Visualization</button>
+    </form>
+
+    <a href="/">Go Back</a>
+</body>
+</html>
