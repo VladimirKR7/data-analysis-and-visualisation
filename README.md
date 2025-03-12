@@ -1,0 +1,1 @@
+a data analysis and visualisation application that will allow data to be downloaded, analysed and then displayed as various charts and graphs. To implement such a tool, you can use Python with the libraries pandas for data manipulation and matplotlib or seaborn for visualisation.
