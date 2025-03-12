@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    color: #4CAF50;
+}
+
+form {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+table.data {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.data, table.data th, table.data td {
+    border: 1px solid #ddd;
+}
+
+table.data th, table.data td {
+    padding: 8px;
+    text-align: center;
+}
+
+img {
+    margin-top: 20px;
+}
